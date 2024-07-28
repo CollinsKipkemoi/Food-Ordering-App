@@ -1,16 +1,15 @@
 import { Image, StyleSheet, Platform } from 'react-native';
-import { View, Text, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import products from '@/data/products';
-
+import OneProduct from '@/src/components/OneProduct';
 
 export default function HomeScreen() {
-  const product = products[0];
   return (
-    <SafeAreaView style={styles.container}>
-      <Image source={{ uri: product.image }} style={styles.image} />
-      <Text style={styles.title}>{product.name}</Text>
-      <Text>${product.price}</Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <OneProduct product={products[0]} />
+      <OneProduct product={products[1]} />
+      <OneProduct product={products[2]} />
+    </View>
   );
 }
 
@@ -19,20 +18,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 10,
-    alignItems: 'center',
-    // justifyContent: 'center',
     color: "black",
+    marginTop: 10,
   },
   title: {
     fontSize: 20,
     fontWeight: '600',
-    marginVertical: 10,
   },
   price:{
     color: "green",
   },
   image: {
-    width: '100%',
+    width: '60%',
     aspectRatio: 1,
   },
   
