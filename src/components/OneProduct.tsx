@@ -1,10 +1,16 @@
-import { Image, StyleSheet} from 'react-native';
-import { View, Text} from 'react-native';
+import { Image, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
+import { Product } from '../Types';
 
-const OneProduct = ({ product }) => {
+const defaultPizzaImage = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/peperoni.png';
+type ProductProps = {
+    product: Product;
+};
+
+const OneProduct = ({ product }: ProductProps) => {
     return (
         <View style={styles.container}>
-            <Image source={{ uri: product.image }} style={styles.image} />
+            <Image source={{ uri: product.image || defaultPizzaImage }} style={styles.image} resizeMode='contain' />
             <Text style={styles.title}>{product.name}</Text>
             <Text style={styles.price}>${product.price}</Text>
         </View>
@@ -20,7 +26,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         padding: 10,
         color: "black",
-        marginTop: 10,
+        borderRadius: 10,
+        maxWidth: '50%',
     },
     title: {
         fontSize: 20,
@@ -30,7 +37,7 @@ const styles = StyleSheet.create({
         color: "green",
     },
     image: {
-        width: '60%',
+        width: '100%',
         aspectRatio: 1,
     },
 
